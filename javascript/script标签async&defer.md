@@ -20,9 +20,10 @@ defer 表示延迟，浏览器在解析 HTML 的时候，遇到 defer 属性的 
 
 ![image-20240804114322532](https://github.com/cd0287912/docs/blob/master/screenShoot/script标签04.png?raw=true)
 
+### 总结
+
 | script 标签    |   JS 执行顺序    | 是否阻塞解析 HTML      |
 | -------------- | :--------------: | ---------------------- |
 | <script>       | 在 HTML 中的顺序 | 阻塞                   |
 | <script async> | 网络请求返回顺序 | 可能阻塞，也可能不阻塞 |
 | <script defer> | 在 HTML 中的顺序 | 不阻塞                 |
-
