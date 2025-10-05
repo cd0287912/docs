@@ -1,0 +1,20 @@
+### useContext的性能陷阱
+
+useContext的核心机制是广播：当Provider的value改变时，所有消费该Context的组件都会重新渲染。
+
+问题的根源：全有或全无
+这种全有或者全无的机制，意味着即使组件只依赖value对象的一小部分数据，只要value对象的引用发生改变，组件就会重新渲染。
+
+优化策略：
+
+拆分Context
+将一个大的Context对象拆分成多个小的Context对象，每个对象只负责管理自己相关的数据。
+场景：Context中包含不相干或者变化频率不同的数据
+
+组合与children
+利用children prop将不依赖Context的昂贵组件隔离出去
+场景：Provider内部包含了不依赖Context的昂贵静态组件
+
+分离数据与api
+将易变的状态state与稳定的更新函数dispatch分开提供
+场景：组件只需要更新状态，而不需要读取
